@@ -13,6 +13,7 @@ DictManager::DictManager(std::vector<DictPtr> &_dicts)
 
 uint64_t DictManager::getWordId(const std::string &_word)
 {
+	hLockTicketPtr lock = m_lock.lock();
 	LangDetect::Lang lang = LangDetect::getLang(_word);
 	
 	std::map<LangDetect::Lang, DictPtr>::iterator it = m_dicts.find(lang);
@@ -24,6 +25,7 @@ uint64_t DictManager::getWordId(const std::string &_word)
 
 uint64_t DictManager::getStemId(const std::string &_word)
 {
+	hLockTicketPtr lock = m_lock.lock();
 	LangDetect::Lang lang = LangDetect::getLang(_word);
 	
 	std::map<LangDetect::Lang, DictPtr>::iterator it = m_dicts.find(lang);
