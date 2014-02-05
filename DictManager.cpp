@@ -35,6 +35,19 @@ uint64_t DictManager::getStemId(const std::string &_word)
 	return dict->getStemId(_word);
 }
 
+std::string DictManager::getWord(uint64_t _id)
+{
+	std::map<LangDetect::Lang, DictPtr>::iterator it = 
+			m_dicts.begin();
+	while (it != m_dicts.end()) {
+		std::string word = it->second->getWord(_id);
+		if (word!="")
+			return word;
+		it++;
+	}
+	return "";
+}
+
 uint64_t DictManager::genId()
 {
 	return ++m_next_id;

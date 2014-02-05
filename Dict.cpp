@@ -33,6 +33,7 @@ Dict::Dict(htConnPoolPtr _conn_pool,
 		uint64_t id;
 		sscanf(kv.value.c_str(), "%llu", &id);
 		m_word_ids.insert(std::pair<std::string, uint64_t>(kv.key, id));
+		m_id_words.insert(std::pair<uint64_t, std::string>(id, kv.key));
 	}
 	while (!stem_scanner.end()) {
 		KeyValue kv = stem_scanner.getNextCell();
@@ -101,6 +102,7 @@ uint64_t Dict::getWordId(const std::string &_word)
 	m_word_writer->insertSync(KeyValue(word, std::string(id_bf)), "id");
 	
 	m_word_ids.insert(std::pair<std::string, uint64_t>(word, id));
+	m_id_words.insert(std::pair<uint64_t, std::string>(id, word));
 }
 
 uint64_t Dict::getStemId(const std::string &_word)
@@ -126,6 +128,15 @@ uint64_t Dict::getStemId(const std::string &_word)
 	
 	m_stem_ids.insert(std::pair<std::string, uint64_t>(stem, id));
 	return id;
+}
+
+std::string Dict::getWord(uint64_t _id)
+{
+	std::tr1::unordered_map<uint64_t, std::string>::iterator it = 
+			m_id_words.find(_id);
+	if (it != m_id_words.end())
+		return it->second;
+	return "";
 }
 
 uint64_t Dict::size()

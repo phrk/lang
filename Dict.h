@@ -39,6 +39,8 @@ class Dict
 	std::tr1::unordered_map<std::string, uint64_t> m_word_ids;
 	std::tr1::unordered_map<std::string, uint64_t> m_stem_ids;
 	
+	std::tr1::unordered_map<uint64_t, std::string> m_id_words;
+	
 	Stemmer m_stemmer;
 	
 	LangDetect::Lang m_lang;
@@ -55,6 +57,8 @@ public:
 	uint64_t getWordId(const std::string &_word);
 	uint64_t getStemId(const std::string &_word);
 
+	std::string getWord(uint64_t _id);
+	
 	uint64_t size();
 	LangDetect::Lang getLang();
 	

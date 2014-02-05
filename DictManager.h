@@ -26,7 +26,7 @@ public:
 	
 	uint64_t getWordId(const std::string &_word);
 	uint64_t getStemId(const std::string &_word);
-	
+	std::string getWord(uint64_t _id);
 };
 
 typedef boost::shared_ptr<DictManager> DictManagerPtr;
