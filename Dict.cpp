@@ -12,14 +12,21 @@ Dict::Dict(htConnPoolPtr _conn_pool,
 	m_stemmer(_lang),
 	m_lang(_lang)
 {
+	//std::cout << "Dict::Dict setting accessors\n";
 	m_word_querier.reset(new htQuerier(_conn_pool, _ns, _word_table));
 	m_stem_querier.reset(new htQuerier(_conn_pool, _ns, _stem_table));
+	
+	//std::cout << "Dict::Dict queuers set\n";
 	
 	m_word_writer.reset(new htCollWriterConc(_conn_pool, _ns, _word_table));
 	m_stem_writer.reset(new htCollWriterConc(_conn_pool, _ns, _stem_table));
 	
+	//std::cout << "Dict::Dict writers set\n";
+	
 	htCollScanner word_scanner(_conn_pool, _ns, _word_table, "id");
 	htCollScanner stem_scanner(_conn_pool, _ns, _stem_table, "id");
+	
+	//std::cout << "Dict::Dict accessors set\n";
 	
 	while (!word_scanner.end()) {
 		KeyValue kv = word_scanner.getNextCell();
