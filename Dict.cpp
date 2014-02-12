@@ -1,10 +1,13 @@
+#include <ThriftBroker/gen-cpp/Client_types.h>
+
 #include "Dict.h"
 
 Dict::Dict(htConnPoolPtr _conn_pool,
 		const std::string _ns,
 		const std::string _word_table,
 		const std::string _stem_table,
-		const LangDetect::Lang &_lang):
+		const LangDetect::Lang &_lang,
+		Reset _reset):
 	m_conn_pool(_conn_pool),
 	m_ns(_ns),
 	m_word_table(_word_table),
@@ -12,6 +15,18 @@ Dict::Dict(htConnPoolPtr _conn_pool,
 	m_stemmer(_lang),
 	m_lang(_lang)
 {
+	if (_reset == Dict::RESET) {
+		htConnPool::htSession sess = _conn_pool->get();
+		Hypertable::ThriftGen::Namespace ns = sess.client->namespace_open(_ns);
+		Hypertable::ThriftGen::HqlResult result;
+		sess.client->hql_query(result, ns, "drop table if exists "+_word_table);
+		sess.client->hql_query(result, ns, "create table "+_word_table+\
+			" (id MAX_VERSIONS=1)");
+		sess.client->hql_query(result, ns, "drop table if exists "+_stem_table);
+		sess.client->hql_query(result, ns, "create table "+_stem_table+\
+			" (id MAX_VERSIONS=1)");
+	}
+	
 	//std::cout << "Dict::Dict setting accessors\n";
 	m_word_querier.reset(new htQuerier(_conn_pool, _ns, _word_table));
 	m_stem_querier.reset(new htQuerier(_conn_pool, _ns, _stem_table));

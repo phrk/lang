@@ -8,11 +8,11 @@
 #ifndef DICT_H
 #define	DICT_H
 
-#include "../htdba/htDba.h"
-#include "../htdba/htConnPool.h"
-#include "../htdba/htQuerier.h"
-#include "../htdba/htCollWriter.h"
-#include "../htdba/htCollScanner.h"
+#include "htdba/htDba.h"
+#include "htdba/htConnPool.h"
+#include "htdba/htQuerier.h"
+#include "htdba/htCollWriter.h"
+#include "htdba/htCollScanner.h"
 
 #include <tr1/unordered_map>
 
@@ -48,11 +48,17 @@ class Dict
 	
 public:
 	
+	enum Reset {
+		RESET,
+		DONT_RESET
+	};
+	
 	Dict(htConnPoolPtr _conn_pool,
 		const std::string _ns,
 		const std::string _word_table,
 		const std::string _stem_table,
-		const LangDetect::Lang &lang);
+		const LangDetect::Lang &lang,
+		Reset _reset = Dict::DONT_RESET);
 	
 	uint64_t getWordId(const std::string &_word);
 	uint64_t getStemId(const std::string &_word);
