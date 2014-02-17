@@ -9,7 +9,7 @@
 #define	DICTMANAGER_H
 
 #include "Dict.h"
-#include <tr1/unordered_map>
+#include <unordered_map>
 #include <map>
 #include "hiaux/threads/locks.h"
 

@@ -14,7 +14,7 @@
 #include "htdba/htCollWriter.h"
 #include "htdba/htCollScanner.h"
 
-#include <tr1/unordered_map>
+#include <unordered_map>
 
 #include <cld/public/compact_lang_det.h>
 #include <cld/public/encodings.h>
@@ -36,10 +36,10 @@ class Dict
 	htCollWriterConcPtr m_word_writer;
 	htCollWriterConcPtr m_stem_writer;
 	
-	std::tr1::unordered_map<std::string, uint64_t> m_word_ids;
-	std::tr1::unordered_map<std::string, uint64_t> m_stem_ids;
+	std::unordered_map<std::string, uint64_t> m_word_ids;
+	std::unordered_map<std::string, uint64_t> m_stem_ids;
 	
-	std::tr1::unordered_map<uint64_t, std::string> m_id_words;
+	std::unordered_map<uint64_t, std::string> m_id_words;
 	
 	Stemmer m_stemmer;
 	
