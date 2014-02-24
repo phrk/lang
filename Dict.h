@@ -18,7 +18,6 @@
 #include "htdba/htCollWriter.h"
 #include "htdba/htCollScanner.h"
 
-
 #include <cld/public/compact_lang_det.h>
 #include <cld/public/encodings.h>
 

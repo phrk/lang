@@ -3,8 +3,8 @@
 
 #include "hiconfig.h"
 
-#include <cld/public/compact_lang_det.h>
-#include <cld/public/encodings.h>
+#include "cld2-read-only/public/compact_lang_det.h"
+#include "cld2-read-only/public/encodings.h"
 #include <string>
 
 class LangDetect
