@@ -8,8 +8,9 @@
 #ifndef DICTMANAGER_H
 #define	DICTMANAGER_H
 
+#include "hiconfig.h"
+
 #include "Dict.h"
-#include <unordered_map>
 #include <map>
 #include "hiaux/threads/locks.h"
 

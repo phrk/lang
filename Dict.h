@@ -8,13 +8,16 @@
 #ifndef DICT_H
 #define	DICT_H
 
+#include "hiconfig.h"
+
+#include "hiaux/structs/hashtable.h"
+
 #include "htdba/htDba.h"
 #include "htdba/htConnPool.h"
 #include "htdba/htQuerier.h"
 #include "htdba/htCollWriter.h"
 #include "htdba/htCollScanner.h"
 
-#include <unordered_map>
 
 #include <cld/public/compact_lang_det.h>
 #include <cld/public/encodings.h>
@@ -36,10 +39,10 @@ class Dict
 	htCollWriterConcPtr m_word_writer;
 	htCollWriterConcPtr m_stem_writer;
 	
-	std::unordered_map<std::string, uint64_t> m_word_ids;
-	std::unordered_map<std::string, uint64_t> m_stem_ids;
+	hiaux::hashtable<std::string, uint64_t> m_word_ids;
+	hiaux::hashtable<std::string, uint64_t> m_stem_ids;
 	
-	std::unordered_map<uint64_t, std::string> m_id_words;
+	hiaux::hashtable<uint64_t, std::string> m_id_words;
 	
 	Stemmer m_stemmer;
 	

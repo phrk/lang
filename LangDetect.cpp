@@ -1,3 +1,4 @@
+#include "hiconfig.h"
 #include "LangDetect.h"
 
 LangDetect::Lang LangDetect::getLang(const std::string &_str)

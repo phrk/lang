@@ -1,3 +1,4 @@
+#include "hiconfig.h"
 #include <ThriftBroker/gen-cpp/Client_types.h>
 
 #include "Dict.h"
@@ -102,7 +103,7 @@ uint64_t Dict::getWordId(const std::string &_word)
 {
 	std::string word = _word;
 	utf8_tolower(word);
-	std::unordered_map<std::string, uint64_t>::iterator it
+	hiaux::hashtable<std::string, uint64_t>::iterator it
 		= m_word_ids.find(word);
 	if (it != m_word_ids.end()) {
 	//	std::cout << "WORD EXISTS " << word << " id: " << it->second << std::endl;
@@ -127,7 +128,7 @@ uint64_t Dict::getStemId(const std::string &_word)
 	std::string stem;
 	m_stemmer.stem(word, stem);
 	
-	std::unordered_map<std::string, uint64_t>::iterator it
+	hiaux::hashtable<std::string, uint64_t>::iterator it
 		= m_stem_ids.find(stem);
 	if (it != m_stem_ids.end()) {
 	//	std::cout << "STEM EXISTS " << stem << " id: " << it->second << std::endl;
@@ -147,7 +148,7 @@ uint64_t Dict::getStemId(const std::string &_word)
 
 std::string Dict::getWord(uint64_t _id)
 {
-	std::unordered_map<uint64_t, std::string>::iterator it = 
+	hiaux::hashtable<uint64_t, std::string>::iterator it = 
 			m_id_words.find(_id);
 	if (it != m_id_words.end())
 		return it->second;

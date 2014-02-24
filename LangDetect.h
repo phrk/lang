@@ -1,6 +1,8 @@
 #ifndef _LANG_DETECT_H_
 #define _LANG_DETECT_H_
 
+#include "hiconfig.h"
+
 #include <cld/public/compact_lang_det.h>
 #include <cld/public/encodings.h>
 #include <string>

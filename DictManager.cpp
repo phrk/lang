@@ -1,3 +1,4 @@
+#include "hiconfig.h"
 #include "DictManager.h"
 
 DictManager::DictManager(std::vector<DictPtr> &_dicts)
