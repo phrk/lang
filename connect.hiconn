@@ -6,6 +6,7 @@
 { "type" : "Glob", "mask" : "../thirdparty/libstemmer_c/src_c/*UTF*.c" } , 
 { "type" : "Glob", "mask" : "../thirdparty/libstemmer_c/runtime/*.c" } ],
 
-"_LINKFLAGS" : [ "-lcld2" ]
+"_LINKFLAGS" : [  ],
+"_DEPS" : ["../thirdparty/cld2-read-only/"]
 
  }
