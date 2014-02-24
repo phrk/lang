@@ -18,8 +18,8 @@
 #include "htdba/htCollWriter.h"
 #include "htdba/htCollScanner.h"
 
-#include <cld/public/compact_lang_det.h>
-#include <cld/public/encodings.h>
+#include "cld2-read-only/public/compact_lang_det.h"
+#include "cld2-read-only/public/encodings.h"
 
 #include "LangDetect.h"
 #include "Stemmer.h"
