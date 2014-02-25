@@ -1,0 +1,10 @@
+{
+"_NAME" : "lang_online",
+
+"_CPPFILES" : [ { "type" : "Glob", "mask" : "*.cpp" } ] ,
+
+"_LINKFLAGS" : [  ],
+
+"_DEPS" : ["../offline/"]
+
+ }

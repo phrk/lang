@@ -15,7 +15,7 @@ Stemmer::~Stemmer()
 	sb_stemmer_delete(m_stemmer);
 }
 
-void Stemmer::stem(const std::string &word, std::string &stem)
+void Stemmer::stem(const std::string &word, std::string &stem) const
 {
 	stem = std::string((const char *)sb_stemmer_stem(m_stemmer, 
 						(const sb_symbol *) word.c_str(),

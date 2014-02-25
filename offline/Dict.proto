@@ -1,0 +1,6 @@
+package lang;
+
+message StringId {
+	required uint64 id = 1;
+	required string str = 2;
+};

@@ -17,7 +17,7 @@ class Stemmer
 	sb_stemmer *m_stemmer;
 public:
 	Stemmer(const LangDetect::Lang &lang);
-	void stem(const std::string &word, std::string &stem);
+	void stem(const std::string &word, std::string &stem) const;
 	~Stemmer();
 };
 

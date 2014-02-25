@@ -21,9 +21,11 @@ class DictManager
 	hAutoLock m_lock;
 	
 public:
-	DictManager(std::vector<DictPtr> &_dicts);
 	
+	DictManager();
 	uint64_t genId();
+	
+	void addDict(DictPtr dict);
 	
 	uint64_t getWordId(const std::string &_word);
 	uint64_t getStemId(const std::string &_word);

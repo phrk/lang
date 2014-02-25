@@ -1,15 +1,16 @@
 #include "hiconfig.h"
 #include "DictManager.h"
 
-DictManager::DictManager(std::vector<DictPtr> &_dicts)
+DictManager::DictManager()
 {
 	m_next_id = 1;
-	for (int i = 0; i<_dicts.size(); i++) {
-		m_dicts.insert(std::pair<LangDetect::Lang, DictPtr>
-				(_dicts[i]->getLang(),_dicts[i]) );
-		m_next_id += _dicts[i]->size();
-		_dicts[i]->setIdGenFunc(boost::bind(&DictManager::genId, this) );
-	}
+}
+
+void DictManager::addDict(DictPtr dict)
+{
+	m_dicts.insert(std::pair<LangDetect::Lang, DictPtr>
+							(dict->getLang(), dict) );
+	m_next_id += dict->size();
 }
 
 uint64_t DictManager::getWordId(const std::string &_word)

@@ -1,0 +1,28 @@
+
+import sys
+sys.path.insert(0, '../../hiaux/hibuilder/')
+
+from hibuilder import HiBuilder
+
+env = Environment()
+
+b = HiBuilder("lang_test")
+
+hicore_path = "../../"
+hiaux_path = "../../"
+
+b.addPath(hicore_path)
+b.addPath(hiaux_path)
+b.addPath("./")
+b.addPath(hicore_path + "thirdparty/")
+
+b.connectLib("../online/")
+b.connectLib("../offline/")
+b.connectLib(hicore_path+"htdba/")
+b.connectLib(hiaux_path+"hiaux/threads/")
+b.connectLib(hiaux_path+"hiaux/strings/")
+
+b.addCCFlags(["-Wno-return-type"])
+b.addCppGlob("*.cpp")
+
+b.buildProgram(Program)
