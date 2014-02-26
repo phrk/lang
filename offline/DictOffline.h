@@ -8,6 +8,7 @@
 
 #include <boost/function.hpp>
 #include <boost/noncopyable.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include "../offline/LangDetect.h"
 #include "../offline/Stemmer.h"

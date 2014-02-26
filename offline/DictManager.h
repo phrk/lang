@@ -10,14 +10,14 @@
 
 #include "hiconfig.h"
 
-#include "Dict.h"
+#include "DictOffline.h"
 #include <map>
 #include "hiaux/threads/locks.h"
 
 class DictManager
 {
 	uint64_t m_next_id;
-	std::map<LangDetect::Lang, DictPtr> m_dicts;
+	std::map<LangDetect::Lang, DictOfflinePtr> m_dicts;
 	hAutoLock m_lock;
 	
 public:
@@ -25,7 +25,7 @@ public:
 	DictManager();
 	uint64_t genId();
 	
-	void addDict(DictPtr dict);
+	void addDict(DictOfflinePtr dict);
 	
 	uint64_t getWordId(const std::string &_word);
 	uint64_t getStemId(const std::string &_word);

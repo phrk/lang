@@ -107,6 +107,8 @@ void DictOffline::dumpToFile(const std::string &_words_filename,
 		while (w_it != w_it_end) {
 			lang::StringId stringid_pb;
 			std::string word = w_it->first;
+			if (word.size()>40)
+				word = word.substr(0, 40);
 			fix_utf8_string(word);
 			stringid_pb.set_id(w_it->second);
 			stringid_pb.set_str(word);
@@ -128,6 +130,8 @@ void DictOffline::dumpToFile(const std::string &_words_filename,
 		while (s_it != s_it_end) {
 			lang::StringId stringid_pb;
 			std::string stem = s_it->first;
+			if (stem.size()>40)
+				stem = stem.substr(0, 40);
 			fix_utf8_string(stem);
 			stringid_pb.set_id(s_it->second);
 			stringid_pb.set_str(stem);
