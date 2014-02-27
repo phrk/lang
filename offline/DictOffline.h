@@ -10,6 +10,7 @@
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 
+//#include "../online/Dict.h"
 #include "../offline/LangDetect.h"
 #include "../offline/Stemmer.h"
 
