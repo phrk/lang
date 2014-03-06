@@ -48,8 +48,8 @@ public:
 	DictOffline(const LangDetect::Lang &_lang,
 				boost::function<uint64_t()> _genWordId);
 	
-	virtual uint64_t getWordId(const std::string &_word) const;
-	virtual uint64_t getStemId(const std::string &_word) const;
+	virtual uint64_t getWordId(const std::string &_word);
+	virtual uint64_t getStemId(const std::string &_word);
 	virtual uint64_t setWordId(const std::string &_word);
 	virtual uint64_t setStemId(const std::string &_word);
 

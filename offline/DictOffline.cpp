@@ -12,7 +12,7 @@ DictOffline::~DictOffline()
 {
 }
 
-uint64_t DictOffline::getWordId(const std::string &_word) const
+uint64_t DictOffline::getWordId(const std::string &_word)
 {
 	std::string word = _word;
 	fix_utf8_string(word);
@@ -25,7 +25,7 @@ uint64_t DictOffline::getWordId(const std::string &_word) const
 	return 0;
 }
 
-uint64_t DictOffline::getStemId(const std::string &_word) const
+uint64_t DictOffline::getStemId(const std::string &_word)
 {
 	std::string word = _word;
 	fix_utf8_string(word);
